@@ -16,7 +16,8 @@ public class IdiomaServlet extends HttpServlet {
         String lang = req.getParameter("lang");
         // Solo aceptar idiomas soportados: español e inglés
         if (lang != null && (lang.equals("es") || lang.equals("en"))) {
-            req.getSession(true).setAttribute("locale", new Locale(lang));
+            // Guardar el locale como string para JSTL
+            req.getSession(true).setAttribute("locale", lang);
         }
         // Redirigir a la página anterior o al inventario por defecto
         String referer = req.getHeader("Referer");
